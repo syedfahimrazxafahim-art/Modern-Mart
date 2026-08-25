@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA | Modern Lifestyle & Essentials</title>
+  <meta name="description" content="Discover premium essentials across electronics, apparel, home goods, and accessories with fast worldwide shipping.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="container announcement-content">
+      <div class="announcement-text">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Spring Season Sale: Use code <strong class="promo-tag" id="promoCodeHeader">WELCOME15</strong> for 15% off your first order!</span>
+      </div>
+      <div class="announcement-actions">
+        <span class="announcement-link" id="copyPromoBtn" title="Copy Promo Code"><i class="fa-regular fa-copy"></i> Copy Code</span>
+        <span class="announcement-divider">|</span>
+        <div class="currency-selector">
+          <i class="fa-solid fa-globe"></i>
+          <span>USD ($)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container nav-container">
+      
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brandLogo">
+        <span class="logo-mark"><i class="fa-solid fa-gem"></i></span>
+        <span class="logo-text">LUMINA<span class="logo-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" id="desktopNav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active" data-category="all">All Products</a></li>
+          <li><a href="#" class="nav-link" data-category="Electronics">Audio & Tech</a></li>
+          <li><a href="#" class="nav-link" data-category="Apparel">Apparel</a></li>
+          <li><a href="#" class="nav-link" data-category="Home">Living</a></li>
+          <li><a href="#" class="nav-link" data-category="Accessories">Accessories</a></li>
+          <li><a href="#" class="nav-link nav-sale" data-filter="sale">Sale <span class="nav-badge">HOT</span></a></li>
+        </ul>
+      </nav>
+
+      <!-- Search & User Actions -->
+      <div class="nav-actions">
+        <!-- Live Search Bar -->
+        <div class="search-wrapper" id="searchWrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search products, brands, tags..." autocomplete="off">
+          <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          
+          <!-- Live Search Quick Dropdown -->
+          <div class="search-dropdown" id="searchDropdown">
+            <div class="search-dropdown-header">
+              <span>Matching Results</span>
+              <span id="searchResultCount">0 found</span>
+            </div>
+            <div class="search-results-list" id="searchResultsList">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button class="action-btn wishlist-toggle-btn" id="wishlistToggleBtn" aria-label="Open wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="badge-count" id="wishlistCount">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="action-btn cart-toggle-btn" id="cartToggleBtn" aria-label="Open shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="badge-count" id="cartCount">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <span class="logo-mark"><i class="fa-solid fa-gem"></i></span>
+        <span class="logo-text">LUMINA</span>
+      </div>
+      <button class="drawer-close-btn" id="mobileDrawerClose" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    
+    <div class="mobile-drawer-body">
+      <div class="mobile-search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="mobileSearchInput" placeholder="Search products...">
+      </div>
+
+      <div class="drawer-section-title">Categories</div>
+      <ul class="mobile-nav-list">
+        <li><button class="mobile-nav-item active" data-category="all"><i class="fa-solid fa-grid-2"></i> All Products</button></li>
+        <li><button class="mobile-nav-item" data-category="Electronics"><i class="fa-solid fa-headphones-simple"></i> Audio & Tech</button></li>
+        <li><button class="mobile-nav-item" data-category="Apparel"><i class="fa-solid fa-shirt"></i> Apparel</button></li>
+        <li><button class="mobile-nav-item" data-category="Home"><i class="fa-solid fa-couch"></i> Living & Decor</button></li>
+        <li><button class="mobile-nav-item" data-category="Accessories"><i class="fa-solid fa-glasses"></i> Accessories</button></li>
+        <li><button class="mobile-nav-item" data-category="Wellness"><i class="fa-solid fa-spa"></i> Wellness</button></li>
+      </ul>
+
+      <div class="drawer-section-title">Quick Links</div>
+      <ul class="mobile-nav-list secondary">
+        <li><button class="mobile-nav-item" id="mobileOpenWishlist"><i class="fa-regular fa-heart"></i> My Wishlist (<span id="mobileWishlistBadge">0</span>)</button></li>
+        <li><button class="mobile-nav-item" id="mobileOpenCart"><i class="fa-solid fa-bag-shopping"></i> Shopping Cart (<span id="mobileCartBadge">0</span>)</button></li>
+        <li><button class="mobile-nav-item" data-filter="sale"><i class="fa-solid fa-tag"></i> Special Offers</button></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="heroSection">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-fire"></i> New Spring 2026 Collection
+        </div>
+        <h1 class="hero-title">Design Elevated for <br><em>Modern Living.</em></h1>
+        <p class="hero-subtitle">Meticulously engineered essentials crafted with sustainable materials, timeless aesthetics, and uncompromising performance.</p>
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" id="heroShopNowBtn">
+            <span>Explore Catalog</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button class="btn btn-secondary" id="heroFeaturedBtn">
+            <i class="fa-solid fa-percent"></i>
+            <span>View Deals</span>
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>25k+</strong>
+            <span>Happy Shoppers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>4.9/5</strong>
+            <span>Verified Rating</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>100%</strong>
+            <span>Carbon Neutral</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card-featured">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80" alt="Lumina SoundPro ANC Headphones" class="hero-img" loading="eager">
+          <div class="hero-floating-pill">
+            <div class="pill-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="pill-text">
+              <span class="pill-title">SoundPro Max ANC</span>
+              <span class="pill-price">$249.00 <s class="pill-old">$329.00</s></span>
+            </div>
+            <button class="pill-btn" id="heroPillQuickView" data-id="1" title="Quick View">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Propositions Banner -->
+  <section class="features-bar">
+    <div class="container features-grid">
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <div class="feature-text">
+          <h4>Free Worldwide Delivery</h4>
+          <p>On all qualifying orders over $75</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="feature-text">
+          <h4>2-Year Extended Warranty</h4>
+          <p>Guaranteed authentic & certified</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="feature-text">
+          <h4>30-Day Effortless Returns</h4>
+          <p>Prepaid instant return labels</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="feature-text">
+          <h4>24/7 Dedicated Support</h4>
+          <p>Live human assistance anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Pills Strip -->
+  <section class="category-strip">
+    <div class="container">
+      <div class="category-scroll-wrapper">
+        <button class="cat-pill active" data-category="all">
+          <i class="fa-solid fa-sparkles"></i> All Collections
+        </button>
+        <button class="cat-pill" data-category="Electronics">
+          <i class="fa-solid fa-headphones"></i> Audio & Electronics
+        </button>
+        <button class="cat-pill" data-category="Apparel">
+          <i class="fa-solid fa-shirt"></i> Minimalist Apparel
+        </button>
+        <button class="cat-pill" data-category="Home">
+          <i class="fa-solid fa-house-laptop"></i> Home & Workspace
+        </button>
+        <button class="cat-pill" data-category="Accessories">
+          <i class="fa-solid fa-watch"></i> Timepieces & Accessories
+        </button>
+        <button class="cat-pill" data-category="Wellness">
+          <i class="fa-solid fa-leaf"></i> Wellness & Care
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Storefront Section -->
+  <main class="store-section" id="storeSection">
+    <div class="container store-layout">
+      
+      <!-- Filters Sidebar (Desktop) -->
+      <aside class="store-sidebar" id="filterSidebar">
+        <div class="sidebar-sticky-inner">
+          <div class="sidebar-header">
+            <h3><i class="fa-solid fa-sliders"></i> Filter Catalog</h3>
+            <button class="reset-filters-btn" id="resetFiltersBtn">Reset All</button>
+          </div>
+
+          <!-- Filter: Search Keyword inside sidebar -->
+          <div class="filter-group">
+            <label class="filter-label">Search Keywords</label>
+            <div class="sidebar-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="sidebarSearchInput" placeholder="Filter by name, color, specs...">
+            </div>
+          </div>
+
+          <!-- Filter: Categories -->
+          <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <div class="filter-options-list" id="categoryFilterList">
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="all" checked>
+                <span class="radio-custom"></span>
+                <span class="option-text">All Items</span>
+                <span class="option-count" id="countAll">(12)</span>
+              </label>
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="Electronics">
+                <span class="radio-custom"></span>
+                <span class="option-text">Audio & Tech</span>
+                <span class="option-count" id="countElectronics">(3)</span>
+              </label>
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="Apparel">
+                <span class="radio-custom"></span>
+                <span class="option-text">Apparel</span>
+                <span class="option-count" id="countApparel">(3)</span>
+              </label>
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="Home">
+                <span class="radio-custom"></span>
+                <span class="option-text">Home & Living</span>
+                <span class="option-count" id="countHome">(2)</span>
+              </label>
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="Accessories">
+                <span class="radio-custom"></span>
+                <span class="option-text">Accessories</span>
+                <span class="option-count" id="countAccessories">(2)</span>
+              </label>
+              <label class="filter-radio-label">
+                <input type="radio" name="categoryFilter" value="Wellness">
+                <span class="radio-custom"></span>
+                <span class="option-text">Wellness & Care</span>
+                <span class="option-count" id="countWellness">(2)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Filter: Price Range Slider -->
+          <div class="filter-group">
+            <div class="price-header">
+              <label class="filter-label">Max Price</label>
+              <span class="price-current-value" id="priceDisplay">$500</span>
+            </div>
+            <input type="range" id="priceRangeInput" class="custom-range" min="20" max="500" step="10" value="500">
+            <div class="price-range-limits">
+              <span>$20</span>
+              <span>$500</span>
+            </div>
+          </div>
+
+          <!-- Filter: Minimum Rating -->
+          <div class="filter-group">
+            <label class="filter-label">Customer Rating</label>
+            <div class="rating-filter-options">
+              <label class="rating-option">
+                <input type="radio" name="ratingFilter" value="0" checked>
+                <span class="rating-radio"></span>
+                <span class="rating-label">All Ratings</span>
+              </label>
+              <label class="rating-option">
+                <input type="radio" name="ratingFilter" value="4.5">
+                <span class="rating-radio"></span>
+                <span class="rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </span>
+                <span class="rating-label">4.5 & up</span>
+              </label>
+              <label class="rating-option">
+                <input type="radio" name="ratingFilter" value="4.0">
+                <span class="rating-radio"></span>
+                <span class="rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </span>
+                <span class="rating-label">4.0 & up</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Filter: Availability & Badges -->
+          <div class="filter-group">
+            <label class="filter-label">Status & Perks</label>
+            <div class="filter-checkbox-list">
+              <label class="filter-checkbox-label">
+                <input type="checkbox" id="filterInStockOnly">
+                <span class="checkbox-custom"></span>
+                <span class="option-text">In Stock Only</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" id="filterOnSaleOnly">
+                <span class="checkbox-custom"></span>
+                <span class="option-text">On Sale / Deals</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" id="filterFreeShippingOnly">
+                <span class="checkbox-custom"></span>
+                <span class="option-text">Free Express Shipping</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- Products Grid & Controls -->
+      <div class="store-content">
+        
+        <!-- Controls Bar -->
+        <div class="catalog-controls-bar">
+          <div class="results-summary">
+            <button class="mobile-filter-trigger" id="mobileFilterTrigger">
+              <i class="fa-solid fa-sliders"></i>
+              <span>Filters</span>
+            </button>
+            <span class="results-count" id="resultsCount">Showing <strong>12</strong> products</span>
+          </div>
+
+          <!-- Active Filter Chips -->
+          <div class="active-chips-container" id="activeChipsContainer">
+            <!-- Dynamically populated tags with remove buttons -->
+          </div>
+
+          <!-- Sort Select -->
+          <div class="sort-wrapper">
+            <label for="sortSelect" class="sort-label">Sort By:</label>
+            <div class="select-styled">
+              <select id="sortSelect">
+                <option value="featured">Featured Collection</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Customer Rating</option>
+                <option value="name-asc">Alphabetical: A-Z</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-chevron"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Dynamically Rendered by script.js -->
+        </div>
+
+        <!-- Empty State Container -->
+        <div class="empty-state hidden" id="emptyState">
+          <div class="empty-icon"><i class="fa-solid fa-box-open"></i></div>
+          <h3>No matching products found</h3>
+          <p>Try adjusting your search terms, expanding your price range, or clearing current filters.</p>
+          <button class="btn btn-primary" id="emptyStateResetBtn">
+            <i class="fa-solid fa-arrow-rotate-right"></i> Reset All Filters
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Deal of the Week Promo Banner -->
+  <section class="deal-section">
+    <div class="container deal-container">
+      <div class="deal-banner">
+        <div class="deal-content">
+          <span class="deal-tag"><i class="fa-solid fa-clock"></i> Limited Time Offer</span>
+          <h2>AeroCore Ultra Mechanical Keyboard</h2>
+          <p>Engineered with hot-swappable switches, seamless wireless connectivity, and CNC machined aerospace aluminum frame.</p>
+          
+          <div class="deal-countdown" id="dealCountdown">
+            <div class="time-box">
+              <span class="time-num" id="cdHours">14</span>
+              <span class="time-label">Hours</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-box">
+              <span class="time-num" id="cdMinutes">35</span>
+              <span class="time-label">Mins</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-box">
+              <span class="time-num" id="cdSeconds">48</span>
+              <span class="time-label">Secs</span>
+            </div>
+          </div>
+
+          <div class="deal-actions">
+            <div class="deal-price-block">
+              <span class="current-deal-price">$129.00</span>
+              <s class="old-deal-price">$189.00</s>
+              <span class="discount-badge">Save $60</span>
+            </div>
+            <button class="btn btn-primary" id="dealAddToCartBtn" data-id="2">
+              <i class="fa-solid fa-cart-plus"></i> Claim Deal Now
+            </button>
+          </div>
+        </div>
+        <div class="deal-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80" alt="Mechanical Keyboard Deal" class="deal-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Testimonials -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-kicker">Real Customer Experiences</span>
+        <h2>Loved by 25,000+ Designers & Creatives</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"The SoundPro Max headphones have transformed my daily workflow. The active noise cancelling is top tier, and build quality feels like a $500 device."</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Elena Vance" class="author-avatar">
+            <div class="author-info">
+              <strong>Elena Vance</strong>
+              <span>Senior Product Designer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"Shipping took only 2 days to California. The Merino Wool Knit Overshirt fits impeccably and breathes effortlessly. Will definitely be ordering more."</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Marcus Sterling" class="author-avatar">
+            <div class="author-info">
+              <strong>Marcus Sterling</strong>
+              <span>Creative Director</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"The ceramic coffee dripper and desk mat elevated my home office setup immediately. Smooth checkout and exceptional customer packaging!"</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Sophia Lin" class="author-avatar">
+            <div class="author-info">
+              <strong>Sophia Lin</strong>
+              <span>Architect</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup with Real Validation -->
+  <section class="newsletter-section" id="newsletterSection">
+    <div class="container newsletter-container">
+      <div class="newsletter-card">
+        <div class="newsletter-icon-wrap">
+          <i class="fa-regular fa-envelope-open"></i>
+        </div>
+        <h2>Unlock $15 Off Your Next Purchase</h2>
+        <p>Subscribe to our private dispatch for exclusive design drops, member-only sales, and curated lifestyle editorials.</p>
+        
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-input-group">
+            <div class="input-with-icon">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="newsletterEmail" placeholder="Enter your email address..." required autocomplete="email">
+            </div>
+            <button type="submit" class="btn btn-primary" id="newsletterSubmitBtn">
+              <span>Subscribe</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <div class="newsletter-feedback" id="newsletterFeedback"></div>
+        </form>
+
+        <div class="newsletter-guarantee">
+          <i class="fa-solid fa-lock"></i> No spam ever. Unsubscribe with 1-click anytime.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      
+      <!-- Column 1: Brand -->
+      <div class="footer-col brand-col">
+        <a href="#" class="brand-logo footer-logo">
+          <span class="logo-mark"><i class="fa-solid fa-gem"></i></span>
+          <span class="logo-text">LUMINA.</span>
+        </a>
+        <p class="footer-desc">Crafting purposeful goods for the intentional lifestyle. Designed with precision, built for longevity.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Pinterest" class="social-icon"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="YouTube" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Shop Links -->
+      <div class="footer-col">
+        <h4 class="footer-title">Collections</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-category="Electronics">Audio & Tech</a></li>
+          <li><a href="#" data-category="Apparel">Apparel & Outerwear</a></li>
+          <li><a href="#" data-category="Home">Living & Workspace</a></li>
+          <li><a href="#" data-category="Accessories">Accessories</a></li>
+          <li><a href="#" data-category="Wellness">Self-Care Essentials</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Customer Care -->
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="#storeSection" id="footerOrderTrack">Track Your Order</a></li>
+          <li><a href="#storeSection" id="footerShippingPolicy">Shipping & Delivery</a></li>
+          <li><a href="#storeSection" id="footerReturnsPolicy">Returns & Exchanges</a></li>
+          <li><a href="#storeSection" id="footerWarranty">Warranty Guarantee</a></li>
+          <li><a href="#newsletterSection" id="footerContactSupport">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Trust & Payment -->
+      <div class="footer-col">
+        <h4 class="footer-title">Payment & Security</h4>
+        <p class="footer-muted">All transactions are encrypted with 256-bit SSL banking grade security.</p>
+        <div class="payment-icons">
+          <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i></span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i></span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-apple-pay"></i></span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-paypal"></i></span>
+          <span class="pay-badge"><i class="fa-brands fa-google-pay"></i></span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 LUMINA Goods Inc. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== DRAWERS & MODALS ==================== -->
+
+  <!-- Slide-out Shopping Cart Drawer -->
+  <div class="drawer-overlay" id="cartOverlay"></div>
+  <aside class="side-drawer cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h3><i class="fa-solid fa-bag-shopping"></i> Shopping Cart</h3>
+        <span class="drawer-badge" id="cartHeaderCount">0 items</span>
+      </div>
+      <button class="drawer-close-btn" id="cartCloseBtn" aria-label="Close cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="free-shipping-tracker" id="freeShippingTracker">
+      <div class="tracker-message" id="shippingTrackerMsg">
+        Add <strong>$75.00</strong> more to unlock <strong>FREE Shipping!</strong>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="shippingProgressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scrollable List -->
+    <div class="drawer-body cart-items-body" id="cartItemsList">
+      <!-- Dynamically generated cart items -->
+    </div>
+
+    <!-- Cart Empty State -->
+    <div class="cart-empty-view hidden" id="cartEmptyView">
+      <div class="empty-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+      <h4>Your cart is currently empty</h4>
+      <p>Explore our curated collections and add your favorite essentials.</p>
+      <button class="btn btn-primary" id="cartStartShoppingBtn">Start Shopping</button>
+    </div>
+
+    <!-- Cart Footer & Summary -->
+    <div class="cart-footer" id="cartFooter">
+      
+      <!-- Promo Code Section -->
+      <div class="cart-promo-section">
+        <div class="promo-input-row">
+          <input type="text" id="cartPromoInput" placeholder="Promo code (e.g. WELCOME15)" uppercase>
+          <button class="btn btn-secondary btn-sm" id="applyPromoBtn">Apply</button>
+        </div>
+        <div class="promo-feedback" id="promoFeedback"></div>
+      </div>
+
+      <!-- Financial Calculation Rows -->
+      <div class="cart-totals-table">
+        <div class="total-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="total-row discount-row hidden" id="discountRow">
+          <span>Discount (<span id="discountPercent">0%</span>)</span>
+          <span class="discount-val" id="cartDiscount">-$0.00</span>
+        </div>
+        <div class="total-row">
+          <span>Estimated Shipping</span>
+          <span id="cartShipping">Calculated at checkout</span>
+        </div>
+        <div class="total-row grand-total-row">
+          <span>Estimated Total</span>
+          <span class="grand-total" id="cartGrandTotal">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Checkout CTA Button -->
+      <button class="btn btn-primary btn-block checkout-btn" id="proceedCheckoutBtn">
+        <i class="fa-solid fa-lock"></i>
+        <span>Secure Checkout</span>
+        <span class="checkout-btn-total" id="checkoutBtnTotal">$0.00</span>
+      </button>
+
+      <button class="clear-cart-link" id="clearCartBtn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- Slide-out Wishlist Drawer -->
+  <div class="drawer-overlay" id="wishlistOverlay"></div>
+  <aside class="side-drawer wishlist-drawer" id="wishlistDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h3><i class="fa-regular fa-heart"></i> My Saved Wishlist</h3>
+        <span class="drawer-badge" id="wishlistHeaderCount">0 saved</span>
+      </div>
+      <button class="drawer-close-btn" id="wishlistCloseBtn" aria-label="Close wishlist">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Wishlist Body -->
+    <div class="drawer-body wishlist-items-body" id="wishlistItemsList">
+      <!-- Dynamically generated wishlist items -->
+    </div>
+
+    <!-- Wishlist Empty View -->
+    <div class="cart-empty-view hidden" id="wishlistEmptyView">
+      <div class="empty-icon"><i class="fa-regular fa-heart"></i></div>
+      <h4>Your wishlist is empty</h4>
+      <p>Save items you love by clicking the heart icon on any product card.</p>
+      <button class="btn btn-primary" id="wishlistStartShoppingBtn">Discover Products</button>
+    </div>
+
+    <div class="drawer-footer wishlist-footer" id="wishlistFooter">
+      <button class="btn btn-primary btn-block" id="moveAllWishlistToCartBtn">
+        <i class="fa-solid fa-cart-plus"></i> Move All to Cart
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewOverlay"></div>
+  <div class="modal quick-view-modal" id="quickViewModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="quickViewCloseBtn" aria-label="Close quick view">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <div class="quick-view-container" id="quickViewContainer">
+      <!-- Populated dynamically by script.js -->
+    </div>
+  </div>
+
+  <!-- Simulated Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModalOverlay"></div>
+  <div class="modal checkout-modal" id="checkoutModal" role="dialog" aria-modal="true">
+    <button class="modal-close-btn" id="checkoutModalCloseBtn" aria-label="Close checkout">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="checkout-modal-content">
+      <div class="checkout-header">
+        <div class="checkout-brand">
+          <span class="logo-mark"><i class="fa-solid fa-gem"></i></span>
+          <span class="logo-text">LUMINA Express Checkout</span>
+        </div>
+        <div class="checkout-steps">
+          <span class="step active"><i class="fa-solid fa-check"></i> 1. Shipping</span>
+          <span class="step-line"></span>
+          <span class="step active">2. Payment</span>
+          <span class="step-line"></span>
+          <span class="step">3. Done</span>
+        </div>
+      </div>
+
+      <div class="checkout-body-grid">
+        <!-- Checkout Form -->
+        <form class="checkout-form" id="checkoutForm" novalidate>
+          <h4 class="form-section-title"><i class="fa-solid fa-location-dot"></i> Shipping Address</h4>
+          <div class="form-row two-col">
+            <div class="form-group">
+              <label for="checkFirstName">First Name *</label>
+              <input type="text" id="checkFirstName" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="checkLastName">Last Name *</label>
+              <input type="text" id="checkLastName" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="checkAddress">Street Address *</label>
+            <input type="text" id="checkAddress" placeholder="123 Modern Blvd, Apt 4B" required>
+          </div>
+          <div class="form-row three-col">
+            <div class="form-group">
+              <label for="checkCity">City *</label>
+              <input type="text" id="checkCity" placeholder="San Francisco" required>
+            </div>
+            <div class="form-group">
+              <label for="checkState">State / Prov *</label>
+              <input type="text" id="checkState" placeholder="CA" required>
+            </div>
+            <div class="form-group">
+              <label for="checkZip">ZIP Code *</label>
+              <input type="text" id="checkZip" placeholder="94107" required>
+            </div>
+          </div>
+
+          <h4 class="form-section-title"><i class="fa-solid fa-credit-card"></i> Payment Method (Demo Mode)</h4>
+          <div class="payment-tabs">
+            <label class="pay-method-option selected">
+              <input type="radio" name="payMethod" value="card" checked>
+              <span class="pay-method-box">
+                <i class="fa-regular fa-credit-card"></i>
+                <strong>Credit Card</strong>
+              </span>
+            </label>
+            <label class="pay-method-option">
+              <input type="radio" name="payMethod" value="apple">
+              <span class="pay-method-box">
+                <i class="fa-brands fa-apple-pay"></i>
+                <strong>Apple Pay</strong>
+              </span>
+            </label>
+            <label class="pay-method-option">
+              <input type="radio" name="payMethod" value="paypal">
+              <span class="pay-method-box">
+                <i class="fa-brands fa-paypal"></i>
+                <strong>PayPal</strong>
+              </span>
+            </label>
+          </div>
+
+          <div class="card-details-fields" id="cardFields">
+            <div class="form-group">
+              <label for="checkCardNumber">Card Number *</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-credit-card"></i>
+                <input type="text" id="checkCardNumber" placeholder="4532 •••• •••• 8890" maxlength="19" required>
+              </div>
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label for="checkCardExp">Exp Date *</label>
+                <input type="text" id="checkCardExp" placeholder="MM/YY" maxlength="5" required>
+              </div>
+              <div class="form-group">
+                <label for="checkCardCvc">CVC / CVV *</label>
+                <input type="text" id="checkCardCvc" placeholder="123" maxlength="4" required>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block checkout-submit-btn" id="checkoutSubmitBtn">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>Place Secure Order</span>
+            <span id="checkoutOrderFinalTotal">$0.00</span>
+          </button>
+        </form>
+
+        <!-- Checkout Order Summary -->
+        <div class="checkout-order-sidebar">
+          <h4>Order Summary</h4>
+          <div class="checkout-items-summary" id="checkoutItemsSummary">
+            <!-- List of items -->
+          </div>
+          <div class="checkout-calc-rows">
+            <div class="calc-row">
+              <span>Items Total:</span>
+              <span id="checkItemsTotal">$0.00</span>
+            </div>
+            <div class="calc-row" id="checkDiscountRow">
+              <span>Discount Applied:</span>
+              <span class="discount-val" id="checkDiscountVal">-$0.00</span>
+            </div>
+            <div class="calc-row">
+              <span>Standard Shipping:</span>
+              <span id="checkShippingVal">Free</span>
+            </div>
+            <div class="calc-row final-due">
+              <span>Total Due:</span>
+              <span id="checkTotalDue">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div class="modal-overlay" id="orderSuccessOverlay"></div>
+  <div class="modal order-success-modal" id="orderSuccessModal" role="dialog">
+    <div class="success-icon-wrap">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <h2>Thank You For Your Order!</h2>
+    <p>Your order has been placed successfully. A confirmation email with tracking information has been dispatched.</p>
+    
+    <div class="order-receipt-box">
+      <div class="receipt-row">
+        <span>Order Number:</span>
+        <strong id="receiptOrderNum">#LUM-948215</strong>
+      </div>
+      <div class="receipt-row">
+        <span>Total Paid:</span>
+        <strong id="receiptTotal">$0.00</strong>
+      </div>
+      <div class="receipt-row">
+        <span>Estimated Delivery:</span>
+        <span>2-4 Business Days</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="continueShoppingSuccessBtn">
+      <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
+    </button>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Quick Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript Application Entry -->
+  <script src="script.js"></script>
+</body>
+</html>

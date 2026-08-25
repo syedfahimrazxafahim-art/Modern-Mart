@@ -1,0 +1,6 @@
+{
+  "name": "Modern E-Commerce Store",
+  "description": "A modern, fully interactive e-commerce storefront featuring product filtering, live search, cart, wishlist, quick view, and responsive design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
