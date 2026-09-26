@@ -1,1 +1,45 @@
-VS Code
+# 🌐 Web Project
+
+A modern, responsive, and professionally designed website developed from scratch with a focus on clean UI, smooth interactions, responsive layouts, and a great user experience.
+
+## ✨ Features
+
+* Modern and clean design
+* Fully responsive layout
+* Smooth animations and transitions
+* Interactive user interface
+* Mobile, tablet, and desktop support
+* Clean and organized code
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* React
+* Vite
+
+## 🎨 Design & Development
+
+This project was **designed and developed by me from scratch**, including the UI design, layout, styling, responsive behavior, animations, and interactive functionality.
+
+## 📱 Responsive Design
+
+The website is optimized to provide a consistent experience across:
+
+* 💻 Desktop
+* 📱 Mobile
+* 📲 Tablet
+
+## 🚀 Project Purpose
+
+This project was created to practice and demonstrate modern web development, UI/UX design, responsive development, and interactive frontend functionality.
+
+## 👨‍💻 Developer
+
+**Fahim**
+Full Stack Developer
+
+---
+
+⭐ If you like this project, feel free to give it a star!
